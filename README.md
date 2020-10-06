@@ -65,6 +65,10 @@ export default App;
 ```
 
 ## API
+### ResponsiveProvider
+You should add `ResponsiveProvider` in your app root component.
+Note that providers should not be inside a View that is animated with Animated or inside a ScrollView since it can cause very frequent updates.
+
 ### useResponsive(styles?)
 Returns all values of the provider. If there is a style object as parameter, it will multiply all allowed values to use 're' unit.
 
