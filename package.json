@@ -2,14 +2,23 @@
   "name": "re-unit",
   "version": "1.0.0",
   "description": "Responsive unit to your React Native app",
-  "main": "index.js",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build",
+    "format": "prettier --write \"src/**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tboerc/re-unit.git"
   },
+  "keywords": [
+    "react-native",
+    "responsive",
+    "unit"
+  ],
   "author": "tboerc",
   "license": "MIT",
   "bugs": {
@@ -17,6 +26,12 @@
   },
   "homepage": "https://github.com/tboerc/re-unit#readme",
   "devDependencies": {
+    "@types/react": "^16.9.51",
+    "@types/react-native": "^0.63.25",
+    "prettier": "^2.1.2",
     "typescript": "^4.0.3"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
