@@ -4,13 +4,16 @@
  *
  * @format
  */
-
 const path = require('path');
 
-const extraNodeModules = {
-  lib: path.resolve(__dirname + '/../lib'),
-};
-const watchFolders = [path.resolve(__dirname + '/../lib')];
+const extraNodeModules = new Proxy(
+  {},
+  {
+    get: (_, name) => path.join(__dirname, `node_modules/${name}`),
+  },
+);
+
+const watchFolders = [path.join(__dirname, '../lib/')];
 
 module.exports = {
   transformer: {
