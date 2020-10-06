@@ -1,0 +1,22 @@
+{
+  "name": "re-unit",
+  "version": "1.0.0",
+  "description": "Responsive unit to your React Native app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tboerc/re-unit.git"
+  },
+  "author": "tboerc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tboerc/re-unit/issues"
+  },
+  "homepage": "https://github.com/tboerc/re-unit#readme",
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
