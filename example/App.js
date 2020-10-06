@@ -37,6 +37,7 @@ const Screen = () => {
 
 const App = () => {
   return (
+    // Remeber to wrap your app with ResponsiveProvider
     <ResponsiveProvider>
       <Screen />
     </ResponsiveProvider>
