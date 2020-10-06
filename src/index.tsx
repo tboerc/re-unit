@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import {StyleSheet, useWindowDimensions} from 'react-native';
+import {useWindowDimensions} from 'react-native';
 import {NAMEDSTYLES, STATE} from './types';
 import blacklist from './blacklist';
 
-const checkBlackList = (key: string) => !blacklist.some((value) => key == value);
+const checkBlackList = (key: string) => !blacklist.some((value) => key === value);
 
 const defaultValue: STATE = {re: 1};
 const Context = React.createContext(defaultValue);
@@ -22,7 +22,7 @@ export const useResponsive = <T extends NAMEDSTYLES<T> | NAMEDSTYLES<any>>(
 ): STATE & {styles?: T | NAMEDSTYLES<T>} => {
   const state = useContext(Context);
 
-  const s = StyleSheet.create(styles);
+  const s = JSON.parse(JSON.stringify(styles));
 
   if (!!styles) {
     Object.entries(styles).forEach(([key, value]) => {
