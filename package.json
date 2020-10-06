@@ -1,6 +1,6 @@
 {
   "name": "re-unit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Responsive unit to your React Native app",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
