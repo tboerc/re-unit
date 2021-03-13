@@ -1,33 +1,35 @@
 import {useContext, useEffect, useState} from 'react';
 
 import {useBlacklist} from './useBlacklist';
-import {Styles, CreateStylefy} from './types';
+import {Styles, CreateStylefy, ColorTheme} from './types';
 
-export const useStylefy = ({Context}: CreateStylefy<any>) => <T extends Styles<T> | Styles<any>>(styles?: T) => {
+export const useStylefy = <T extends ColorTheme<T>>({Context}: CreateStylefy<T>) => <S extends Styles<S> | Styles<any>>(
+  styles?: S,
+) => {
   const state = useContext(Context);
-  const [parsedStyle, setParsedStyle] = useState(styles);
+  const [stylefy, setStylefy] = useState(styles);
 
   useEffect(() => {
     const applyStylefy = () => {
-      const newParsed = JSON.parse(JSON.stringify(styles));
+      const newStylefy = JSON.parse(JSON.stringify(styles));
 
       Object.entries(styles).forEach(([key, value]) => {
         Object.entries(value).forEach(([subKey, subValue]) => {
           if (typeof subValue === 'number' && !useBlacklist(subKey)) {
-            newParsed[key][subKey] = subValue * state.rw;
+            newStylefy[key][subKey] = subValue * state.rw;
           } else if (typeof subValue === 'string') {
             if (subValue.startsWith('-')) {
-              newParsed[key][subKey] = +subValue.substring(1);
+              newStylefy[key][subKey] = +subValue.substring(1);
             } else if (subValue.startsWith('+')) {
-              newParsed[key][subKey] = +subValue.substring(1) * state.rw;
+              newStylefy[key][subKey] = +subValue.substring(1) * state.rw;
             } else if (subValue.startsWith('colors.')) {
-              newParsed[key][subKey] = (state.colors ?? {})[subValue.substring(7)];
+              newStylefy[key][subKey] = (state.colors ?? {})[subValue.substring(7)];
             }
           }
         });
       });
 
-      setParsedStyle(newParsed);
+      setStylefy(newStylefy);
     };
 
     if (styles) {
@@ -35,5 +37,5 @@ export const useStylefy = ({Context}: CreateStylefy<any>) => <T extends Styles<T
     }
   }, [state.rw, styles]);
 
-  return {...state, styles: parsedStyle};
+  return {...state, stylefy};
 };

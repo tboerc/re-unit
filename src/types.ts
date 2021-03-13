@@ -13,9 +13,9 @@ export interface UseRelativeToWidth {
   orientation?: 'portrait' | 'landscape';
 }
 
-export interface CreateStylefy<themes> {
-  themes?: themes;
-  Context: React.Context<Stylefy<themes, any>>;
+export interface CreateStylefy<T> {
+  themes?: T;
+  Context: React.Context<Context<T>>;
 }
 
 export interface StylefyProviderProps<T> {
@@ -23,7 +23,7 @@ export interface StylefyProviderProps<T> {
   children: React.ReactNode;
 }
 
-export interface Stylefy<themes, colors> extends UseRelativeToWidth {
-  colors?: Readonly<colors>;
-  changeTheme?: (type: keyof themes) => void;
+export interface Context<T> extends UseRelativeToWidth {
+  colors?: T[keyof T];
+  changeTheme?: (type: keyof T) => void;
 }
