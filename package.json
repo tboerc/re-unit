@@ -1,13 +1,15 @@
 {
-  "name": "re-unit",
-  "version": "1.0.1",
-  "description": "Responsive unit to your React Native app",
+  "name": "react-native-stylefy",
+  "version": "1.0.0",
+  "description": "A theme provider and scalable unit to your app",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc",
-    "prepare": "yarn build",
+    "build:start": "tsc",
+    "build:clean": "rimraf lib",
     "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "concurrently \"yarn format\" \"yarn build\"",
+    "build": "concurrently \"yarn build:clean\" \"yarn build:start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,7 +30,9 @@
   "devDependencies": {
     "@types/react": "^16.9.51",
     "@types/react-native": "^0.63.25",
+    "concurrently": "^6.0.0",
     "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
     "typescript": "^4.0.3"
   },
   "files": [

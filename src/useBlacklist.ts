@@ -5,12 +5,10 @@ const blacklist: Array<string> = [
   'flexBasis',
   'flexGrow',
   'flexShrink',
-  'lineHeight',
-  'letterSpacing',
   'maxLength',
   'opacity',
   'shadowOpacity',
   'zIndex',
 ];
 
-export default blacklist;
+export const useBlacklist = (key: string) => blacklist.some((value) => key === value);
